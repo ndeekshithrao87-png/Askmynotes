@@ -1,3 +1,4 @@
+import os
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
@@ -10,15 +11,11 @@ app = FastAPI(
 )
 
 
-# React runs on port 5173.
-# FastAPI runs on port 8000.
-# Since these are different origins, CORS permission is required.
+# React runs on port 5173 locally, or on a Render domain in production.
+# Allow all origins so your deployed frontend can communicate with the backend.
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost:5173",
-        "http://127.0.0.1:5173",
-    ],
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -62,6 +59,10 @@ def ask_question(request: QuestionRequest):
         question=cleaned_question,
         answer=f'Your question "{cleaned_question}" was received successfully.',
     )
+
+
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="127.0.0.1", port=8000)
+    port = int(os.environ.get("PORT", 8000))
+    uvicorn.run("main:app", host="0.0.0.0", port=port, reload=True)
+

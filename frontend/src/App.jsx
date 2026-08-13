@@ -21,7 +21,8 @@ function App() {
     setAnswer("");
 
     try {
-      const response = await fetch("http://localhost:8000/ask", {
+      const apiBaseUrl = import.meta.env.VITE_API_URL || "http://localhost:8000";
+      const response = await fetch(`${apiBaseUrl}/ask`, {
         method: "POST",
 
         headers: {
