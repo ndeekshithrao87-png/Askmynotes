@@ -8,35 +8,33 @@ body {
   background: #f3f5f8;
 }
 
-.page {
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 24px;
-}
-
-.card {
+.app-card {
   width: 100%;
   max-width: 650px;
+  margin: 40px auto;
   padding: 32px;
   background: white;
   border-radius: 12px;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
 }
 
-h1 {
+.app-title {
   margin-top: 0;
+  text-align: center;
 }
 
-label {
+.app-subtitle {
+  text-align: center;
+}
+
+.field-label {
   display: block;
   margin-top: 24px;
   margin-bottom: 8px;
   font-weight: bold;
 }
 
-textarea {
+.question-input {
   width: 100%;
   padding: 12px;
   font: inherit;
@@ -45,7 +43,7 @@ textarea {
   resize: vertical;
 }
 
-button {
+.ask-button {
   width: 100%;
   margin-top: 16px;
   padding: 12px;
@@ -57,22 +55,29 @@ button {
   color: white;
 }
 
-button:disabled {
+.ask-button:disabled {
   cursor: not-allowed;
   opacity: 0.6;
 }
 
-.answer,
-.error {
+.response-box {
   margin-top: 20px;
   padding: 16px;
   border-radius: 8px;
-}
-
-.answer {
   background: #eaf7ee;
 }
 
-.error {
+.response-label {
+  font-weight: bold;
+}
+
+.error-text {
+  margin-top: 20px;
+  padding: 16px;
+  border-radius: 8px;
   background: #fdecec;
+}
+.app-title{
+  color: #222 !important;
+  opacity: 1 !important;
 }
